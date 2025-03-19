@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #4c566a; 
+            color: white; 
+        }
+
+        .card {
+            background-color: #3b4252;
+            border: 1px solid #444;
+        }
+
+        .card-header, .card-footer {
+            background-color: #2e3440; 
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #5e81ac; /* Primary button color */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color:  #81a1c1; /* Darker on hover */
+        }
+
+        .form-control {
+            background-color: #4c566a; 
+            color: whitesmoke;
+            border: 1px solid white;
+        }
+
+        .form-control:focus {
+            background-color: #606d87; 
+            border-color: white;
+            color: whitesmoke;
+        }
+
+        .container {
+            max-width: 460px; /* Set max width */
+            margin-top: 50px; /* Add some spacing from top */
+        }
+        .other-link {
+            color: #88c0d0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="card mb-4">
+            <div class="card-header text-center">
+                <h4>Login</h4>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <p>Don't have an account? <a href="./register.html" class="other-link">Register here</a></p>
+            </div>
+        </div>
+
+
+
+    <!-- Bootstrap 5 JS -->
+    <script>
+        // Array of image filenames in the 'images' folder
+        const images = [
+            'image-1.jpg',
+            'image-2.png',
+            'image-3.png', 
+            'image-4.jpg',
+            'image-5.jpg',
+            'image-6.png'
+        ];
+
+        // Select a random image from the array
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+
+        // Set the background image dynamically
+        document.body.style.backgroundImage = `url('backgrounds/${randomImage}')`;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
