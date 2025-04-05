@@ -23,12 +23,12 @@
         }
 
         .btn-primary {
-            background-color: #5e81ac;
+            background-color: #5e81ac; 
             border: none;
         }
 
         .btn-primary:hover {
-            background-color:  #81a1c1; 
+            background-color:  #81a1c1;
         }
 
         .form-control {
@@ -52,6 +52,7 @@
             color: #88c0d0;
         }
 
+
         .back-arrow {
             display: block;
             margin: 20px auto;
@@ -72,42 +73,43 @@
             color: #ffffff;
             background-color: #333333;
         }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
+        <!-- Login Form -->
+        <div class="card mb-4">
             <div class="card-header text-center">
-                <h4>Register</h4>
+                <h4>Login</h4>
             </div>
             <div class="card-body">
                 <form>
                     <div class="mb-3">
-                        <label for="registerUsername" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="registerUsername" placeholder="Enter a username" required>
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="registerEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="registerPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="registerPassword" placeholder="Enter your password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
             </div>
             <div class="card-footer text-center">
-                <p>Already have an account? <a href="./login.html" class="other-link">Login here</a></p>
+                <p>Don't have an account? <a href="./register.html" class="other-link">Register here</a></p>
             </div>
         </div>
     </div>
 
-    <a href="index.html" class="back-arrow">
+    <!-- Back arrow link placed below the form -->
+    <a href="./#home" class="back-arrow">
         <i class="bi bi-arrow-left"></i>
     </a>
 
+    <!-- Bootstrap 5 JS -->
     <script>
+        // Array of image filenames in the 'images' folder
         const images = [
             'png1.png',
             'png2.png',
@@ -119,10 +121,12 @@
             'jpg5.jpg',
         ];
 
+        // Select a random image from the array
         const randomImage = images[Math.floor(Math.random() * images.length)];
 
+        // Set the background image dynamically
         document.body.style.backgroundImage = `url('backgrounds/${randomImage}')`;
-        document.body.style.backgroundSize = '300px auto ';
+        document.body.style.backgroundSize = '300px auto '; // Only scale width
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
