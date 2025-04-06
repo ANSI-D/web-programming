@@ -1,9 +1,4 @@
 <?php
-require_once 'UserService.php';
-require_once 'CategoryService.php';
-require_once 'PostService.php';
-require_once 'CommentService.php';
-require_once 'LikeService.php';
 
 // User Routes
 Flight::route('GET /users', function() {

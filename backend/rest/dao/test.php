@@ -1,15 +1,14 @@
 <?php
-require_once 'dao/UserDao.php';
-require_once 'dao/CategoryDao.php';
-require_once 'dao/PostDao.php';
-require_once 'dao/CommentDao.php';
-require_once 'dao/LikeDao.php';
+require_once './UserDao.php';
+require_once './CategoryDao.php';
+require_once './PostDao.php';
+require_once './CommentDao.php';
+//  require_once './LikeDao.php';
 
 $userDao = new UserDao();
 $categoryDao = new CategoryDao();
 $postDao = new PostDao();
 $commentDao = new CommentDao();
-$likeDao = new LikeDao();
 
 // Insert a new user
 $userDao->insert([

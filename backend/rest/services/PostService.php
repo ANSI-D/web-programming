@@ -1,5 +1,7 @@
 <?php
-require_once 'PostDao.php';
+require_once '../dao/PostDao.php';
+require_once 'BaseService.php';
+
 
 class PostService extends BaseService {
     public function __construct() {

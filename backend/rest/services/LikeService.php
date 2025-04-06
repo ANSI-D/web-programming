@@ -1,5 +1,7 @@
 <?php
-require_once 'LikeDao.php';
+require_once '../dao/LikeDao.php';
+require_once 'BaseService.php';
+
 
 class LikeService extends BaseService {
     public function __construct() {

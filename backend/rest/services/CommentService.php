@@ -1,5 +1,7 @@
 <?php
-require_once 'CommentDao.php';
+require_once '../dao/CommentDao.php';
+require_once 'BaseService.php';
+
 
 class CommentService extends BaseService {
     public function __construct() {

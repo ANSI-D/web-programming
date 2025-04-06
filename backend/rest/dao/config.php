@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private static $host = '127.0.0.1';
+    private static $host = 'localhost';
     private static $dbName = 'web_database';
     private static $username = 'root';
-    private static $password = '';
+    private static $password = 'iamdanis555';
     private static $connection = null;
 
     public static function connect() {
