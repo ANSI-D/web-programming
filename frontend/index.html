@@ -1,9 +1,3 @@
-<!-- /*
-* Template Name: Blogy
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,7 +12,6 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
 	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -42,42 +35,49 @@
     <script src="js/flatpickr.min.js"></script>
 
     <script src="js/glightbox.min.js"></script>
-    <script src="js/navbar.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
 
-	<title>Blogy &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+	<title>WhatToHost</title>
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark fixed-top">
-        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
             <!-- Brand -->
-            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+            <a href="/" class="navbar-brand d-flex align-items-center">
                 <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
                     <use xlink:href="#bootstrap"></use>
                 </svg>
             </a>
 
-            <!-- Navbar Links -->
-            <ul class="nav me-auto">
-                <li><a href="#home" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#single" class="nav-link px-2 text-white">Single</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-            </ul>
+            <!-- Hamburger Menu Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <!-- Search -->
-            <form class="d-flex me-3">
-                <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-            </form>
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navbar Links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#home" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li class="nav-item"><a href="#single" class="nav-link px-2 text-white">Single</a></li>
+                    <li class="nav-item"><a href="#category" class="nav-link px-2 text-white">Categories</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link px-2 text-white">Contact</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link px-2 text-white">About</a></li>
+                </ul>
 
-            <!-- Buttons -->
-            <div class="text-end">
-                <a href="login.html" class="btn btn-outline-light">Login</a>
-                <a href="register.html" class="btn btn-primary">Register</a>
+                <!-- Search and Buttons -->
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
+                    <form class="d-flex me-3 mb-3 mb-lg-0">
+                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+                    <div class="text-end">
+                        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                        <a href="register.html" class="btn btn-primary">Register</a>
+                    </div>
+                </div>
             </div>
-            
         </div>
     </nav>
 
@@ -102,4 +102,4 @@
     </script>
 	
   </body>
-  </html>
+</html>
