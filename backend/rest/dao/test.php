@@ -1,46 +1,40 @@
 <?php
-require_once './UserDao.php';
-require_once './CategoryDao.php';
-require_once './PostDao.php';
-require_once './CommentDao.php';
-//  require_once './LikeDao.php';
 
-$userDao = new UserDao();
-$categoryDao = new CategoryDao();
-$postDao = new PostDao();
-$commentDao = new CommentDao();
+require_once __DIR__ . '/UserDao.class.php';
 
-// Insert a new user
-$userDao->insert([
-    'username' => 'johndoe',
-    'email' => 'john@example.com',
-    'password' => password_hash('password123', PASSWORD_DEFAULT),
-    'role' => 'user'
-]);
+$user_dao = new UserDao();
 
-// Insert a category
-$categoryDao->insert([
-    'name' => 'Technology',
-    'description' => 'Posts about technology'
-]);
+// Add a new user
+$new_user = [
+    "username" => "John Doe",
+    "email" => "johndoe@example.com",
+    "password" => "password123",
+    "role" => "user"
+];
 
-// Insert a post
-$postDao->insert([
-    'title' => 'First Post',
-    'content' => 'This is my first post content',
-    'autor_id' => 1,
-    'category_id' => 1
-]);
+$added_user = $user_dao->addUser($new_user);
+print_r($added_user);
 
-// Fetch all users
-$users = $userDao->getAll();
+// Get all users
+$users = $user_dao->getUsers();
 print_r($users);
 
-// Fetch all categories
-$categories = $categoryDao->getAll();
-print_r($categories);
+// Get a user by ID
+$user_id = $added_user['id'];
+$user = $user_dao->getUserByID($user_id);
+print_r($user);
 
-// Fetch posts by author
-$authorPosts = $postDao->getByAuthor(1);
-print_r($authorPosts);
+// Update the user
+$updated_user = [
+    "username" => "John Smith",
+    "email" => "johnsmith@example.com",
+    "password" => "newpassword123",
+    "role" => "admin"
+];
+$user_dao->editUser($user_id, $updated_user);
+print_r($user_dao->getUserByID($user_id));
+
+// Delete the user
+// $user_dao->deleteUser($user_id);
+// print_r($user_dao->getUsers());
 ?>
