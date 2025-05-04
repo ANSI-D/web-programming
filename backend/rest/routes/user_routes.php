@@ -11,9 +11,6 @@ Flight::group('/users', function(){
      *      path="/users",
      *      tags={"users"},
      *      summary="Get all users",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Array of all users"
@@ -30,9 +27,6 @@ Flight::group('/users', function(){
      *      path="/users/user",
      *      tags={"users"},
      *      summary="Get user by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="User data or false if not found"
@@ -93,9 +87,6 @@ Flight::group('/users', function(){
      *      path="/users/delete/{user_id}",
      *      tags={"users"},
      *      summary="Delete user by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Success message"
@@ -122,9 +113,6 @@ Flight::group('/users', function(){
      *      path="/users/{user_id}",
      *      tags={"users"},
      *      summary="Get user by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="User data"

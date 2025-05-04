@@ -11,9 +11,7 @@ Flight::group('/likes', function(){
      *      path="/likes",
      *      tags={"likes"},
      *      summary="Get all likes",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
+
      *      @OA\Response(
      *           response=200,
      *           description="Array of all likes"
@@ -27,38 +25,33 @@ Flight::group('/likes', function(){
 
     /**
      * @OA\Get(
-     *      path="/likes/like",
+     *      path="/likes/{like_id}",
      *      tags={"likes"},
      *      summary="Get like by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
+
      *      @OA\Response(
      *           response=200,
      *           description="Like data or false if not found"
      *      ),
      *      @OA\Parameter(
      *          name="like_id",
-     *          in="query",
+     *          in="path",
      *          required=true,
      *          @OA\Schema(type="number")
      *      )
      * )
      */
-    Flight::route('GET /like', function() {
-        $params = Flight::request()->query;
-        $like = Flight::get('likeService')->getLikeById($params['like_id']);
+    Flight::route('GET /@like_id', function($like_id) {
+        $like = Flight::get('likeService')->getLikeById($like_id);
         Flight::json($like);
     });
 
     /**
      * @OA\Post(
-     *      path="/likes/add",
+     *      path="/likes",
      *      tags={"likes"},
      *      summary="Add a like",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
+
      *      @OA\Response(
      *           response=200,
      *           description="Success message"
@@ -66,15 +59,14 @@ Flight::group('/likes', function(){
      *      @OA\RequestBody(
      *          description="Like data",
      *          @OA\JsonContent(
-     *              required={"post_id", "user_id", "like_status"},
-     *              @OA\Property(property="post_id", type="integer", example=1),
-     *              @OA\Property(property="user_id", type="integer", example=1),
-     *              @OA\Property(property="like_status", type="boolean", example=true)
+     *              required={"comment_id", "user_id"},
+     *              @OA\Property(property="comment_id", type="integer", example=1),
+     *              @OA\Property(property="user_id", type="integer", example=1)
      *          )
      *      )
      * )
      */
-    Flight::route('POST /add', function() {
+    Flight::route('POST /', function() {
         $payload = Flight::request()->data->getData();
 
         try {
@@ -87,12 +79,10 @@ Flight::group('/likes', function(){
 
     /**
      * @OA\Delete(
-     *      path="/likes/delete/{like_id}",
+     *      path="/likes/{like_id}",
      *      tags={"likes"},
      *      summary="Delete like by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
+
      *      @OA\Response(
      *           response=200,
      *           description="Success message"
@@ -105,7 +95,7 @@ Flight::group('/likes', function(){
      *      )
      * )
      */
-    Flight::route('DELETE /delete/@like_id', function($like_id) {
+    Flight::route('DELETE /@like_id', function($like_id) {
         if($like_id == NULL || $like_id == '') {
             Flight::halt(400, "You have to provide valid like id!");
         }
@@ -116,40 +106,111 @@ Flight::group('/likes', function(){
 
     /**
      * @OA\Get(
-     *      path="/likes/count/{post_id}",
+     *      path="/likes/comment/{comment_id}",
      *      tags={"likes"},
-     *      summary="Get like count for post",
+     *      summary="Get likes for a comment",
      *      @OA\Response(
      *           response=200,
-     *           description="Like count"
+     *           description="Array of likes"
      *      ),
      *      @OA\Parameter(
-     *          name="post_id",
+     *          name="comment_id",
      *          in="path",
      *          required=true,
      *          @OA\Schema(type="number")
      *      )
      * )
      */
-    Flight::route('GET /count/@post_id', function($post_id) {
-        $count = Flight::get('likeService')->getLikeCount($post_id);
+    Flight::route('GET /comment/@comment_id', function($comment_id) {
+        $likes = Flight::get('likeService')->getLikesByCommentId($comment_id);
+        Flight::json($likes);
+    });
+
+    /**
+     * @OA\Get(
+     *      path="/likes/user/{user_id}",
+     *      tags={"likes"},
+     *      summary="Get likes by a user",
+
+     *      @OA\Response(
+     *           response=200,
+     *           description="Array of likes"
+     *      ),
+     *      @OA\Parameter(
+     *          name="user_id",
+     *          in="path",
+     *          required=true,
+     *          @OA\Schema(type="number")
+     *      )
+     * )
+     */
+    Flight::route('GET /user/@user_id', function($user_id) {
+        $likes = Flight::get('likeService')->getLikesByUserId($user_id);
+        Flight::json($likes);
+    });
+
+    /**
+     * @OA\Delete(
+     *      path="/likes/user/{user_id}/comment/{comment_id}",
+     *      tags={"likes"},
+     *      summary="Delete like by user and comment",
+
+     *      @OA\Response(
+     *           response=200,
+     *           description="Success message"
+     *      ),
+     *      @OA\Parameter(
+     *          name="user_id",
+     *          in="path",
+     *          required=true,
+     *          @OA\Schema(type="number")
+     *      ),
+     *      @OA\Parameter(
+     *          name="comment_id",
+     *          in="path",
+     *          required=true,
+     *          @OA\Schema(type="number")
+     *      )
+     * )
+     */
+    Flight::route('DELETE /user/@user_id/comment/@comment_id', function($user_id, $comment_id) {
+        Flight::get('likeService')->deleteLikeByUserAndComment($user_id, $comment_id);
+        Flight::json(['message' => "Like deleted successfully"]);
+    });
+
+    /**
+     * @OA\Get(
+     *      path="/likes/count/comment/{comment_id}",
+     *      tags={"likes"},
+     *      summary="Get like count for comment",
+     *      @OA\Response(
+     *           response=200,
+     *           description="Like count"
+     *      ),
+     *      @OA\Parameter(
+     *          name="comment_id",
+     *          in="path",
+     *          required=true,
+     *          @OA\Schema(type="number")
+     *      )
+     * )
+     */
+    Flight::route('GET /count/comment/@comment_id', function($comment_id) {
+        $count = Flight::get('likeService')->getLikeCountForComment($comment_id);
         Flight::json(["count" => $count]);
     });
 
     /**
      * @OA\Get(
-     *      path="/likes/status/{post_id}/{user_id}",
+     *      path="/likes/status/comment/{comment_id}/user/{user_id}",
      *      tags={"likes"},
-     *      summary="Check if user liked a post",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
+     *      summary="Check if user liked a comment",
      *      @OA\Response(
      *           response=200,
      *           description="Like status"
      *      ),
      *      @OA\Parameter(
-     *          name="post_id",
+     *          name="comment_id",
      *          in="path",
      *          required=true,
      *          @OA\Schema(type="number")
@@ -162,8 +223,8 @@ Flight::group('/likes', function(){
      *      )
      * )
      */
-    Flight::route('GET /status/@post_id/@user_id', function($post_id, $user_id) {
-        $status = Flight::get('likeService')->getUserLikeStatus($post_id, $user_id);
+    Flight::route('GET /status/comment/@comment_id/user/@user_id', function($comment_id, $user_id) {
+        $status = Flight::get('likeService')->getUserLikeStatusForComment($comment_id, $user_id);
         Flight::json(["liked" => $status]);
     });
 

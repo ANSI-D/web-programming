@@ -11,46 +11,54 @@ class LikeService {
 
     public function addLike($like) {
         // Validate required fields
-        if (!isset($like['like_status'])) {
-            throw new Exception("Like status is required");
+        if (!isset($like['user_id']) || !isset($like['comment_id'])) {
+            throw new Exception("User ID and Comment ID are required");
         }
 
-        // Add additional business logic if needed
+        // Check if user already liked this comment
+        $existingLike = $this->getUserLikeStatusForComment($like['comment_id'], $like['user_id']);
+        if ($existingLike) {
+            throw new Exception("User already liked this comment");
+        }
+
+        // Add the like
         $likeData = [
-            'id' => $like['id'] ?? null,
-            'like_status' => $like['like_status']
+            'user_id' => $like['user_id'],
+            'comment_id' => $like['comment_id']
         ];
 
         return $this->likeDao->addLike($likeData);
     }
 
     public function getLikes() {
-        $data = $this->likeDao->getLikes();
-        return ["data" => $data];
+        return $this->likeDao->getLikes();
     }
 
     public function getLikeById($like_id) {
-        return $this->likeDao->getLikeByID($like_id);
+        return $this->likeDao->getLikeById($like_id);
     }
 
     public function deleteLike($like_id) {
         $this->likeDao->deleteLike($like_id);
     }
 
-    // Additional method to get like count for a post
-    public function getLikeCount($post_id) {
-        $query = "SELECT COUNT(*) as like_count FROM likes WHERE post_id = :post_id";
-        $result = $this->likeDao->query($query, ["post_id" => $post_id]);
-        return $result[0]['like_count'] ?? 0;
+    public function getLikesByCommentId($comment_id) {
+        return $this->likeDao->getLikesByCommentId($comment_id);
     }
 
-    // Additional method to check if user liked a post
-    public function getUserLikeStatus($post_id, $user_id) {
-        $query = "SELECT like_status FROM likes WHERE post_id = :post_id AND user_id = :user_id";
-        $result = $this->likeDao->query_unique($query, [
-            "post_id" => $post_id,
-            "user_id" => $user_id
-        ]);
-        return $result['like_status'] ?? null;
+    public function getLikesByUserId($user_id) {
+        return $this->likeDao->getLikesByUserId($user_id);
+    }
+
+    public function deleteLikeByUserAndComment($user_id, $comment_id) {
+        $this->likeDao->deleteLikeByUserAndComment($user_id, $comment_id);
+    }
+
+    public function getLikeCountForComment($comment_id) {
+        return $this->likeDao->getLikeCountForComment($comment_id);
+    }
+
+    public function getUserLikeStatusForComment($comment_id, $user_id) {
+        return $this->likeDao->getUserLikeStatusForComment($comment_id, $user_id);
     }
 }

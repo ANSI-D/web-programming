@@ -11,9 +11,6 @@ Flight::group('/comments', function(){
      *      path="/comments",
      *      tags={"comments"},
      *      summary="Get all comments",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Array of all comments"
@@ -30,9 +27,6 @@ Flight::group('/comments', function(){
      *      path="/comments/comment",
      *      tags={"comments"},
      *      summary="Get comment by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Comment data or false if not found"
@@ -56,9 +50,6 @@ Flight::group('/comments', function(){
      *      path="/comments/add",
      *      tags={"comments"},
      *      summary="Add or edit a comment",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Success message"
@@ -100,9 +91,6 @@ Flight::group('/comments', function(){
      *      path="/comments/delete/{comment_id}",
      *      tags={"comments"},
      *      summary="Delete comment by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Success message"
@@ -129,9 +117,6 @@ Flight::group('/comments', function(){
      *      path="/comments/{comment_id}",
      *      tags={"comments"},
      *      summary="Get comment by ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Comment data"
@@ -154,9 +139,6 @@ Flight::group('/comments', function(){
      *      path="/comments/post/{post_id}",
      *      tags={"comments"},
      *      summary="Get comments by post ID",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Array of comments for the post"

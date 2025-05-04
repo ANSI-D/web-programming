@@ -11,9 +11,6 @@ Flight::group('/posts', function(){
      *      path="/posts",
      *      tags={"posts"},
      *      summary="Get all posts",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
      *      @OA\Response(
      *           response=200,
      *           description="Get all posts"
@@ -30,9 +27,7 @@ Flight::group('/posts', function(){
      *      path="/posts/post",
      *      tags={"posts"},
      *      summary="Get post by id",
-     *      security={
-     *          {"ApiKey": {}}
-     *      },
+
      *      @OA\Response(
      *           response=200,
      *           description="Post data, or false if post doesn't exist"
