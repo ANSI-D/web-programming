@@ -32,7 +32,7 @@ class LikeDao extends BaseDao {
     }
 
     public function deleteLike($like_id) {
-        $query = "SELECT * FROM likes WHERE `like` = :like";
+        $query = "DELETE FROM likes WHERE id = :id";
         $this->execute($query, [
             'id' => $like['id']
             
