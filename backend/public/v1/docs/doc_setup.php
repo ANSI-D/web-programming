@@ -2,10 +2,10 @@
 /**
 * @OA\Info(
 *     title="API",
-*     description="Restaurant API",
+*     description="Swagger API",
 *     version="1.0",
 *     @OA\Contact(
-*         email="web2001programming@gmail.com",
+*         email="danis.pojskic@stu.ibu.edu.ba",
 *         name="Web Programming"
 *     )
 * )

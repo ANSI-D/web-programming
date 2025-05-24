@@ -4,6 +4,7 @@ require_once __DIR__ . '/CategoryDao.class.php';
 
 $category_dao = new CategoryDao();
 
+
 // Add a new category
 $new_category = [
     "name" => "Technology",
