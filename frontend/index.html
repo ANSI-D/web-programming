@@ -28,7 +28,8 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.spapp.js"></script>
 	<script src="js/jquery.spapp.min.js"></script>
-
+    <script src="js/utils/utils.js"></script>
+    
 	<script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/tiny-slider.js"></script>
 
@@ -67,19 +68,24 @@
                     <li class="nav-item"><a href="#about" class="nav-link px-2 text-white">About</a></li>
                 </ul>
 
-                <!-- Search and Buttons -->
+                <!--  <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                        <a href="register.html" class="btn btn-primary">Register</a> -->
                 <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
-                    <form class="d-flex me-3 mb-3 mb-lg-0">
-                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-                    </form>
+
                     <div class="text-end">
-                        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
-                        <a href="register.html" class="btn btn-primary">Register</a>
+                        <a href="javascript:void(0);" class="btn btn-outline-light me-2" id="logout-button">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+    <script>
+        $(document).ready(function () {
+            $("#logout-button").on("click", function () {
+                Utils.logout(); // Call the logout function from utils.js
+            });
+        });
+    </script>
 
 	 <!-- Spapp Start -->
 	 <main id="spapp" role="main">
@@ -93,12 +99,25 @@
     <!-- Spapp End -->
     </main>
 
-	<script>
-        let app = $.spapp({
-            defaultView: "#home",
-            templateDir: "./html/", 
+
+
+    <script>
+        $(document).ready(function () {
+            const user = Utils.get_from_localstorage("token");
+            console.log("User from localStorage:", user); // Debugging line
+    
+            if (user) {
+                // If the user exists and has a valid token, initialize the app
+                let app = $.spapp({
+                    defaultView: "#home",
+                    templateDir: "./html/",
+                });
+                app.run();
+            } else {
+                // If no user or token is found, redirect to login.html
+                window.location.href = "login.html";
+            }
         });
-        app.run();
     </script>
   </body>
 </html>
