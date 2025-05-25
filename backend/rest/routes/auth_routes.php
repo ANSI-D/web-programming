@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../services/AuthService.class.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
