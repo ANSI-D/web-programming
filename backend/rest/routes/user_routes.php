@@ -58,7 +58,6 @@ Flight::group('/users', function(){
      *          description="User data",
      *          @OA\JsonContent(
      *              required={"username", "email", "password"},
-     *              @OA\Property(property="id", type="integer", example=1),
      *              @OA\Property(property="username", type="string", example="john_doe"),
      *              @OA\Property(property="email", type="string", example="john@example.com"),
      *              @OA\Property(property="password", type="string", example="securepassword"),
@@ -70,11 +69,12 @@ Flight::group('/users', function(){
     Flight::route('POST /add', function() {
         $payload = Flight::request()->data->getData();
 
-        if($payload['id'] != NULL && $payload['id'] != '') {
+        // Check if 'id' exists in the payload before accessing it
+        if (isset($payload['id']) && $payload['id'] != NULL && $payload['id'] != '') {
             $user = Flight::get('userService')->editUser($payload);
             $message = "User updated successfully";
         } else {
-            unset($payload['id']);
+            unset($payload['id']); // Ensure 'id' is not passed to the addUser method
             $user = Flight::get('userService')->addUser($payload);
             $message = "User added successfully";
         }
