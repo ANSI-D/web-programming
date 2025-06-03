@@ -46,6 +46,15 @@ class UserDao extends BaseDao {
             'role' => $user['role']
         ]);
     }
+    public function getUserByEmail($email) {
+        $query = "SELECT * 
+        FROM users
+        WHERE email = :email";
+    
+        return $this->query_unique($query, [
+            "email" => $email
+        ]);
+    }
 }
 
 ?>

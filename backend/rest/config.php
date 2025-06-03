@@ -21,7 +21,7 @@ class Config
     }
     public static function DB_PASS()
     {
-        return 'iamdanis555';
+        return 'mysql';
     }
     public static function DB_HOST()
     {
