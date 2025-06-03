@@ -20,20 +20,21 @@ class BaseDao
         }
     }
 
-    protected function query($query, $params)
+    protected function query($query, $params = [])
     {
         $stmt = $this->connection->prepare($query);
         $stmt->execute($params);
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    protected function query_unique($query, $params)
+    protected function query_unique($query, $params = [])
     {
         $results = $this->query($query, $params);
         return reset($results);
     }
 
-    protected function execute($query, $params)
+    protected function execute($query, $params = [])
     {
         $prepared_statement = $this->connection->prepare($query);
         if ($params) {
@@ -45,6 +46,31 @@ class BaseDao
         return $prepared_statement;
     }
 
+    public function transactionalExecute($query, $params = [])
+    {
+        try {
+            // Start a transaction
+            $this->connection->beginTransaction();
+
+            $prepared_statement = $this->connection->prepare($query);
+            if ($params) {
+                foreach ($params as $key => $param) {
+                    $prepared_statement->bindValue($key, $param);
+                }
+            }
+            $prepared_statement->execute();
+
+            // Commit the transaction
+            $this->connection->commit();
+
+            return $prepared_statement;
+        } catch (PDOException $e) {
+            // Rollback the transaction in case of an error
+            $this->connection->rollBack();
+            throw $e;
+        }
+    }
+
     public function insert($table, $entity)
     {
         $columns = implode(', ', array_keys($entity));
@@ -52,8 +78,7 @@ class BaseDao
 
         $query = "INSERT INTO {$table} ({$columns}) VALUES ({$values})";
 
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute($entity);
+        $stmt = $this->transactionalExecute($query, $entity);
         $entity['id'] = $this->connection->lastInsertId();
         return $entity;
     }

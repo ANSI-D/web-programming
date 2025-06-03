@@ -27,4 +27,7 @@ class Config
     {
         return 'localhost';
     }
+    public static function JWT_SECRET(){
+        return 'yXeRoQsPSXNBjJUsxQDWz4KW65G+TjzoRESAZJX7DQ0';
+    }
 }
