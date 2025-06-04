@@ -79,6 +79,7 @@
                 <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
 
                     <div class="text-end">
+                        <a href="#admin" class="btn btn-outline-warning me-2" id="admin-button" style="display: none;">Admin Panel</a>
                         <a href="javascript:void(0);" class="btn btn-outline-light me-2" id="logout-button">Logout</a>
                     </div>
                 </div>
@@ -87,8 +88,19 @@
     </nav>
     <script>
         $(document).ready(function () {
+            // Check if user is admin and show admin button
+            const user = Utils.get_from_localstorage("user");
+            if (user && user.role === "admin") {
+                $("#admin-button").show();
+            }
+
             $("#logout-button").on("click", function () {
                 Utils.logout(); // Call the logout function from utils.js
+            });
+
+            $("#admin-button").on("click", function () {
+                // Navigate to admin panel
+                window.location.hash = "#admin";
             });
         });
     </script>

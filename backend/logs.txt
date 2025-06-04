@@ -212,3 +212,112 @@ Stack trace:
 #11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
 #12 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(13): Flight::__callStatic('start', Array)
 #13 {main}
+Exception: auth_middleware must be a mapped method. in C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php:157
+Stack trace:
+#0 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('auth_middleware', Array)
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php(70): Flight::__callStatic('auth_middleware', Array)
+#2 [internal function]: {closure}()
+#3 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#4 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#6 [internal function]: flight\Engine->_start()
+#7 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#12 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#13 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(13): Flight::__callStatic('start', Array)
+#14 {main}
+Exception: auth_middleware must be a mapped method. in C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php:157
+Stack trace:
+#0 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('auth_middleware', Array)
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php(70): Flight::__callStatic('auth_middleware', Array)
+#2 [internal function]: {closure}()
+#3 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#4 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#6 [internal function]: flight\Engine->_start()
+#7 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#12 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#13 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(13): Flight::__callStatic('start', Array)
+#14 {main}
+Error: Class "Roles" not found in C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php:70
+Stack trace:
+#0 [internal function]: {closure}()
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#2 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#3 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#4 [internal function]: flight\Engine->_start()
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#7 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
+#12 {main}
+Error: Class "Roles" not found in C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php:70
+Stack trace:
+#0 [internal function]: {closure}()
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#2 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#3 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#4 [internal function]: flight\Engine->_start()
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#7 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
+#12 {main}
+Error: Class "Roles" not found in C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php:70
+Stack trace:
+#0 [internal function]: {closure}()
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#2 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#3 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#4 [internal function]: flight\Engine->_start()
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#7 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
+#12 {main}
+Error: Class "Roles" not found in C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php:70
+Stack trace:
+#0 [internal function]: {closure}()
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#2 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#3 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#4 [internal function]: flight\Engine->_start()
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#7 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
+#12 {main}
+Error: Class "Roles" not found in C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php:70
+Stack trace:
+#0 [internal function]: {closure}()
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#2 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#3 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#4 [internal function]: flight\Engine->_start()
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#7 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
+#12 {main}

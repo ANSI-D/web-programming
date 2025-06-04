@@ -67,6 +67,8 @@ Flight::group('/users', function(){
      * )
      */
     Flight::route('POST /add', function() {
+        //Flight::auth_middleware()->authorizeRole(Roles::ADMIN);
+
         $payload = Flight::request()->data->getData();
 
         // Check if 'id' exists in the payload before accessing it
