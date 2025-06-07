@@ -123,12 +123,25 @@
     </main>
 
 
-
 	<script>
         let app = $.spapp({
             defaultView: "#home",
             templateDir: "./html/", 
         });
+        
+        // Add role-based access control for post-panel
+        app.route({
+            view: "post-panel",
+            onReady: function() {
+                // Check if user has admin role every time post-panel is accessed
+                const user = Utils.get_from_localstorage("user");
+                if (!user || user.role !== 'admin') {
+                    window.location.hash = '#home';
+                    return;
+                }
+            }
+        });
+        
         app.run();
     </script>
 
