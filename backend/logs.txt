@@ -337,3 +337,39 @@ Stack trace:
 #11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
 #12 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
 #13 {main}
+ErrorException: Undefined array key "password" in C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\dao\UserDao.class.php:45
+Stack trace:
+#0 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\dao\UserDao.class.php(45): flight\Engine->handleError(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 45)
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\services\UserService.class.php(45): UserDao->editUser('6', Array)
+#2 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php(76): UserService->editUser(Array)
+#3 [internal function]: {closure}()
+#4 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#6 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#7 [internal function]: flight\Engine->_start()
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#12 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#13 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#14 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
+#15 {main}
+ErrorException: Undefined array key "password" in C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\dao\UserDao.class.php:45
+Stack trace:
+#0 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\dao\UserDao.class.php(45): flight\Engine->handleError(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 45)
+#1 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\services\UserService.class.php(45): UserDao->editUser('6', Array)
+#2 C:\xampp\htdocs\danis-pojskic\web-programming\backend\rest\routes\user_routes.php(76): UserService->editUser(Array)
+#3 [internal function]: {closure}()
+#4 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(356): call_user_func_array(Object(Closure), Array)
+#5 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Object(Closure), Array)
+#6 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(604): flight\core\Dispatcher->execute(Object(Closure), Array)
+#7 [internal function]: flight\Engine->_start()
+#8 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(378): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(289): flight\core\Dispatcher->invokeCallable(Array, Array)
+#10 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(133): flight\core\Dispatcher->execute(Array, Array)
+#11 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\core\Dispatcher.php(97): flight\core\Dispatcher->runEvent('start', Array)
+#12 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Engine.php(153): flight\core\Dispatcher->run('start', Array)
+#13 C:\xampp\htdocs\danis-pojskic\web-programming\backend\vendor\flightphp\core\flight\Flight.php(138): flight\Engine->__call('start', Array)
+#14 C:\xampp\htdocs\danis-pojskic\web-programming\backend\index.php(42): Flight::__callStatic('start', Array)
+#15 {main}

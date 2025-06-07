@@ -33,18 +33,37 @@ class UserDao extends BaseDao {
         $this->execute($query, [
             'id' => $user_id
         ]);
-    }
-
-    public function editUser($user_id, $user) {
-        $query = "UPDATE users SET username = :username, email = :email, password = :password, role = :role WHERE id = :id";
-
-        $this->execute($query, [
-            'id' => $user_id,
-            'username' => $user['username'],
-            'email' => $user['email'],
-            'password' => $user['password'],
-            'role' => $user['role']
-        ]);
+    }    public function editUser($user_id, $user) {
+        // Build query dynamically based on available fields
+        $fields = [];
+        $params = ['id' => $user_id];
+        
+        if (isset($user['username'])) {
+            $fields[] = "username = :username";
+            $params['username'] = $user['username'];
+        }
+        
+        if (isset($user['email'])) {
+            $fields[] = "email = :email";
+            $params['email'] = $user['email'];
+        }
+        
+        if (isset($user['password'])) {
+            $fields[] = "password = :password";
+            $params['password'] = $user['password'];
+        }
+        
+        if (isset($user['role'])) {
+            $fields[] = "role = :role";
+            $params['role'] = $user['role'];
+        }
+        
+        if (empty($fields)) {
+            return; // Nothing to update
+        }
+        
+        $query = "UPDATE users SET " . implode(', ', $fields) . " WHERE id = :id";
+        $this->execute($query, $params);
     }
     public function getUserByEmail($email) {
         $query = "SELECT * 
