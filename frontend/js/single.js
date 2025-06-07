@@ -2,21 +2,13 @@
 $(document).ready(function() {
     // Helper to get query param from hash or search
     function getPostIdFromUrl() {
-        // Try to get id from both hash (SPApp) and search (direct load)
+        // Handles #single?id=1, #single&foo=bar&id=1, etc.
         var hash = window.location.hash;
         var queryIndex = hash.indexOf('?');
-        if (queryIndex !== -1) {
-            var query = hash.substring(queryIndex + 1);
-            var params = new URLSearchParams(query);
-            if (params.get('id')) return params.get('id');
-        }
-        // Fallback: try to extract from search (direct load)
-        var search = window.location.search;
-        if (search) {
-            var params2 = new URLSearchParams(search.substring(1));
-            if (params2.get('id')) return params2.get('id');
-        }
-        return null;
+        if (queryIndex === -1) return null;
+        var query = hash.substring(queryIndex + 1);
+        var params = new URLSearchParams(query);
+        return params.get('id');
     }
 
     var postId = getPostIdFromUrl();

@@ -77,9 +77,9 @@
                 <!--  <a href="login.html" class="btn btn-outline-light me-2">Login</a>
                         <a href="register.html" class="btn btn-primary">Register</a> -->
                 <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
-
                     <div class="text-end">
                         <a href="#admin" class="btn btn-outline-warning me-2" id="admin-button" style="display: none;">Admin Panel</a>
+                        <a href="#post-panel" class="btn btn-outline-success me-2" id="post-panel-button" style="display: none;">New Post</a>
                         <a href="javascript:void(0);" class="btn btn-outline-light me-2" id="logout-button">Logout</a>
                     </div>
                 </div>
@@ -92,6 +92,7 @@
             const user = Utils.get_from_localstorage("user");
             if (user && user.role === "admin") {
                 $("#admin-button").show();
+                $("#post-panel-button").show();
             }
 
             $("#logout-button").on("click", function () {
@@ -101,6 +102,10 @@
             $("#admin-button").on("click", function () {
                 // Navigate to admin panel
                 window.location.hash = "#admin";
+            });
+            $("#post-panel-button").on("click", function () {
+                // Navigate to post panel
+                window.location.hash = "#post-panel";
             });
         });
     </script>
@@ -115,6 +120,7 @@
         <section id="search" data-load="search-result.html"></section>
         <section id="about" data-load="about.html"></section>
         <section id="admin" data-load="admin.html"></section>
+        <section id="post-panel" data-load="post-panel.html"></section> <!-- Post Panel Section -->
     <!-- Spapp End -->
     </main>
 

@@ -1,0 +1,91 @@
+<body >
+  <div class="container mt-5" style="margin-top: 40px;">
+    <h2 class="mb-4" style="padding-top: 40px;">Create New Post</h2>
+    <form id="create-post-form">
+      <div class="mb-3">
+        <label for="post-title" class="form-label">Post Title</label>
+        <input type="text" class="form-control" id="post-title" name="title" required>
+      </div>
+      <div class="mb-3">
+        <label for="post-content" class="form-label">Content</label>
+        <textarea class="form-control" id="post-content" name="content" rows="6" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <div id="post-success" class="alert alert-success mt-3 d-none">Post created successfully!</div>
+      <div id="post-error" class="alert alert-danger mt-3 d-none">Failed to create post.</div>
+    </form>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+  const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+  if (!user || user.role !== 'admin') {
+    window.location.hash = '#home';
+    return;
+  }
+
+  $('#create-post-form').on('submit', function (e) {
+    e.preventDefault();
+    const formData = {
+      title: $('#post-title').val(),
+      content: $('#post-content').val()
+    };
+    $('#post-success').addClass('d-none');
+    $('#post-error').addClass('d-none');
+
+    // Get token from localStorage (your format)
+    let token = null;
+    // Try to get token from user object if not found in 'token'
+    const tokenObjRaw = localStorage.getItem('token');
+    if (tokenObjRaw) {
+      try {
+        // If already a string, use as is; if object, extract .token
+        if (tokenObjRaw.startsWith('{')) {
+          const tokenObj = JSON.parse(tokenObjRaw);
+          token = tokenObj.token;
+        } else {
+          token = tokenObjRaw;
+        }
+        console.log('Extracted token:', token);
+      } catch (e) {
+        console.error('Invalid token object in localStorage', tokenObjRaw);
+      }
+    } else if (user && user.token) {
+      token = user.token;
+      console.log('Token found in user object:', token);
+    } else {
+      console.warn('No token object found in localStorage');
+    }
+    if (!token || typeof token !== 'string' || token.trim() === '') {
+      $('#post-error').removeClass('d-none').text('Authentication token is missing. Please log in again.');
+      console.error('Authentication token is missing or empty.', token);
+      return;
+    }
+
+    // Debug: log token before AJAX
+    console.log('Using token for Authorization header:', token);
+
+    $.ajax({
+      url: '../backend/rest/posts/add',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(formData),
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      success: function (response) {
+        $('#post-success').removeClass('d-none');
+        $('#create-post-form')[0].reset();
+      },
+      error: function (xhr) {
+        $('#post-error').removeClass('d-none').text('Failed to create post: ' + xhr.responseText);
+        console.error('AJAX error:', xhr);
+      }
+    });
+  });
+});
+
+  </script>
+</body>
+</html>

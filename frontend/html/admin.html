@@ -62,4 +62,14 @@
     </div>
   </div>
   <script src="../frontend/js/admin.js"></script>
+    <script>
+    $(document).ready(function () {
+      // Only allow admins to access this page
+      const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+      if (!user || user.role !== 'admin') {
+        window.location.hash = '#home';
+        return;
+      }
+    });
+  </script>
 </body>
