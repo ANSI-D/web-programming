@@ -225,6 +225,29 @@
         window.location.hash = '#home';
         return;
       }
+      
+      // Fix navbar issues when in admin panel
+      // This ensures proper z-index and positioning for navbar elements
+      $('body').css('padding-top', '60px');
     });
   </script>
+  
+  <!-- Fix for navbar in admin panel -->
+  <style>
+    /* Ensure navbar stays on top with proper positioning */
+    .navbar-toggler {
+      position: relative !important;
+      z-index: 1050 !important;
+    }
+    
+    /* Ensure proper spacing for the admin panel content */
+    .section {
+      padding-top: 2rem;
+    }
+    
+    /* Prevent any overflow issues that could affect the navbar */
+    body {
+      overflow-x: hidden;
+    }
+  </style>
 </body>

@@ -93,5 +93,35 @@
       });
     });
   </script>
+  
+  <!-- Fix for navbar in post panel -->
+  <style>
+    /* Ensure navbar stays on top with proper positioning */
+    .navbar-toggler {
+      position: relative !important;
+      z-index: 1050 !important;
+    }
+    
+    /* Add proper spacing for the post panel content */
+    body {
+      overflow-x: hidden;
+    }
+    
+    /* Adjust hero overlay position to prevent navbar overlap */
+    .hero.overlay.inner-page {
+      margin-top: 30px;
+    }
+  </style>
+  
+  <script>
+    $(document).ready(function() {
+      // Ensure navbar collapses when interacting with the post panel
+      $('#create-post-form').on('click', function() {
+        if($('.navbar-collapse').hasClass('show')) {
+          $('.navbar-collapse').collapse('hide');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -37,15 +37,11 @@ var CommentService = {
             var formattedDate = !isNaN(date.getTime())
                 ? date.getFullYear() + '-' + String(date.getMonth()+1).padStart(2,'0') + '-' + String(date.getDate()).padStart(2,'0') + ' ' + String(date.getHours()).padStart(2,'0') + ':' + String(date.getMinutes()).padStart(2,'0')
                 : comment.created_at;
-            var author = comment.user_id ? 'User ' + comment.user_id : 'Anonymous';
-            var content = comment.content || '';
-            var html = `
+            var authorName = comment.name || (comment.user_id ? 'User ' + comment.user_id : 'Anonymous'); // Use comment.name if available
+            var content = comment.content || '';            var html = `
                 <li class="comment">
-                    <div class="vcard">
-                        <img src="../images/person_1.jpg" alt="User avatar">
-                    </div>
                     <div class="comment-body">
-                        <h3>${author}</h3>
+                        <h3>${authorName}</h3>
                         <div class="meta">${formattedDate}</div>
                         <p>${content}</p>
                     </div>

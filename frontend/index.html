@@ -106,9 +106,25 @@
                 window.location.hash = "#post-panel";
             });
 
-            // Hamburger menu: close collapse on nav-link or button click (for SPApp)
+            // Improved hamburger menu handling for mobile
+            // 1. Close on nav links and button clicks
             $('.navbar-nav .nav-link, .navbar .btn').on('click', function() {
                 if($('.navbar-toggler').is(':visible')) {
+                    $('.navbar-collapse').collapse('hide');
+                }
+            });
+            
+            // 2. Close on clicking outside the navbar
+            $(document).on('click', function(event) {
+                const $navbar = $('.navbar-collapse');
+                if ($navbar.hasClass('show') && !$(event.target).closest('.navbar').length) {
+                    $navbar.collapse('hide');
+                }
+            });
+            
+            // 3. Close when hash changes (SPA navigation)
+            $(window).on('hashchange', function() {
+                if($('.navbar-collapse').hasClass('show')) {
                     $('.navbar-collapse').collapse('hide');
                 }
             });
