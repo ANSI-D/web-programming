@@ -1757,6 +1757,32 @@ progress {
     -webkit-overflow-scrolling: touch; } }
 
 @media (max-width: 991.98px) {
+  .navbar .d-flex.flex-column.flex-lg-row.align-items-start.align-items-lg-center {
+    width: 100%;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    margin-top: 1rem;
+  }
+  .navbar .d-flex.flex-column.flex-lg-row.align-items-start.align-items-lg-center .text-end {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0;
+  }
+  .navbar .btn {
+    width: 100%;
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.1em;
+  }
+  .navbar .btn:last-child {
+    margin-bottom: 0;
+  }
+
   .table-responsive-lg {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; } }
@@ -10450,6 +10476,30 @@ textarea {
     margin-top: 50px; }
     .testimonial-half .text .author strong {
       color: #000; }
+
+/* Back button style for single post page */
+.back-btn {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 1050;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.back-btn span {
+  font-size: 1.5rem;
+  color: #214252;
+  line-height: 1;
+}
 
 .site-footer {
   background: #214252;

@@ -105,6 +105,13 @@
                 // Navigate to post panel
                 window.location.hash = "#post-panel";
             });
+
+            // Hamburger menu: close collapse on nav-link or button click (for SPApp)
+            $('.navbar-nav .nav-link, .navbar .btn').on('click', function() {
+                if($('.navbar-toggler').is(':visible')) {
+                    $('.navbar-collapse').collapse('hide');
+                }
+            });
         });
     </script>
 

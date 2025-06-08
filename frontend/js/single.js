@@ -27,4 +27,9 @@ $(document).ready(function() {
         // Inject post content into the content body
         $("#single-post-content").html(`<p>${post.content}</p>`);
     });
+
+    // Load comments for this post
+    CommentService.getCommentsByPostId(postId, function(comments) {
+        CommentService.renderComments(comments);
+    });
 });

@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../css/tiny-slider.css">
 <link rel="stylesheet" href="../css/glightbox.min.css">
 <link rel="stylesheet" href="../css/spapp.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <div class="site-cover site-cover-sm same-height overlay single-page" style="background-color: navy;">
@@ -23,9 +24,18 @@
   <section class="section">
     <div class="container">
       <div class="row blog-entries element-animate justify-content-center">
-        <div class="col-md-12 col-lg-8 main-content">
-          <div class="post-content-body" id="single-post-content" style="font-size: 1.15em; color: #333333;">
+        <div class="col-md-12 col-lg-8 main-content">          <div class="post-content-body" id="single-post-content" style="font-size: 1.15em; color: #333333;">
             <!-- Post content will be injected here by JS -->
+          </div>
+          
+          <!-- Dynamic Comments Section -->
+          <div class="pt-5 comment-wrap" id="dynamic-comments-section">
+            <h3 class="mb-5 heading">
+              <span id="dynamic-comments-count">0</span> Comments
+            </h3>
+            <ul class="comment-list" id="dynamic-comments-list">
+              <!-- Comments will be dynamically loaded here -->
+            </ul>
           </div>
         </div>
       </div>
@@ -34,124 +44,45 @@
 
 
 
-  <div class="pt-5 comment-wrap">
-    <h3 class="mb-5 heading">6 Comments</h3>
-    <ul class="comment-list">
-      <li class="comment">
-        <div class="vcard">
-          <img src="../images/person_1.jpg" alt="Image placeholder">
-        </div>
-        <div class="comment-body">
-          <h3>Jean Doe</h3>
-          <div class="meta">January 9, 2018 at 2:21pm</div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-          <p><a href="#" class="reply rounded">Reply</a></p>
-        </div>
-      </li>
+ 
 
-      <li class="comment">
-        <div class="vcard">
-          <img src="../images/person_2.jpg" alt="Image placeholder">
-        </div>
-        <div class="comment-body">
-          <h3>Jean Doe</h3>
-          <div class="meta">January 9, 2018 at 2:21pm</div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-          <p><a href="#" class="reply rounded">Reply</a></p>
-        </div>
-
-        <ul class="children">
-          <li class="comment">
-            <div class="vcard">
-              <img src="../images/person_3.jpg" alt="Image placeholder">
-            </div>
-            <div class="comment-body">
-              <h3>Jean Doe</h3>
-              <div class="meta">January 9, 2018 at 2:21pm</div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-              <p><a href="#" class="reply rounded">Reply</a></p>
-            </div>
-
-
-            <ul class="children">
-              <li class="comment">
-                <div class="vcard">
-                  <img src="../images/person_4.jpg" alt="Image placeholder">
-                </div>
-                <div class="comment-body">
-                  <h3>Jean Doe</h3>
-                  <div class="meta">January 9, 2018 at 2:21pm</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                  <p><a href="#" class="reply rounded">Reply</a></p>
-                </div>
-
-                <ul class="children">
-                  <li class="comment">
-                    <div class="vcard">
-                      <img src="../images/person_5.jpg" alt="Image placeholder">
-                    </div>
-                    <div class="comment-body">
-                      <h3>Jean Doe</h3>
-                      <div class="meta">January 9, 2018 at 2:21pm</div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                      <p><a href="#" class="reply rounded">Reply</a></p>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-
-      <li class="comment">
-        <div class="vcard">
-          <img src="../images/person_1.jpg" alt="Image placeholder">
-        </div>
-        <div class="comment-body">
-          <h3>Jean Doe</h3>
-          <div class="meta">January 9, 2018 at 2:21pm</div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-          <p><a href="#" class="reply rounded">Reply</a></p>
-        </div>
-      </li>
-    </ul>
-    <!-- END comment-list -->
-
-    <div class="comment-form-wrap pt-5">
-      <h3 class="mb-5">Leave a comment</h3>
-      <form action="#" class="p-5 bg-light">
-        <div class="form-group">
-          <label for="name">Name *</label>
-          <input type="text" class="form-control" id="name">
-        </div>
-        <div class="form-group">
-          <label for="email">Email *</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-          <label for="website">Website</label>
-          <input type="url" class="form-control" id="website">
-        </div>
-
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="submit" value="Post Comment" class="btn btn-primary">
-        </div>
-
-      </form>
+    <div class="comment-form-wrap pt-5 d-flex justify-content-center">
+      <div style="width:100%; max-width:850px; margin:0 auto; padding:32px 32px; background:#f8f9fa; border-radius:12px; box-shadow:0 2px 16px rgba(0,0,0,0.04);">
+        <h3 class="mb-5 text-center">Leave a comment</h3>
+        <form action="#" class="p-0">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label for="website">Website</label>
+            <input type="url" class="form-control" id="website">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+          <div class="form-group text-center">
+            <input type="submit" value="Post Comment" class="btn btn-primary px-4">
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <!-- END main-content -->
+  <a href="../#home" class="back-btn">
+    <span>&larr;</span>
+  </a>
 
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery.spapp.min.js"></script>
     <script src="../js/utils/constants.js"></script>
-    <script src="../js/utils/utils.js"></script>
-    <script src="../js/utils/rest_client.js"></script>
+    <script src="../js/utils/utils.js"></script>    <script src="../js/utils/rest_client.js"></script>
     <script src="../js/services/PostService.js"></script>
+    <script src="../js/services/CommentService.js"></script>
     <script src="../js/single.js"></script>
 </body>
