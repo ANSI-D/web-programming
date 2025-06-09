@@ -60,18 +60,19 @@ Flight::group('/posts', function(){
      *          )
      *      )
      * )
-     */
-    Flight::route('POST /add', function(){
+     */    Flight::route('POST /add', function(){
         $payload = Flight::request()->data->getData();
 
-        if($payload['id'] != NULL && $payload['id'] != '') {
+        if(isset($payload['id']) && $payload['id'] != NULL && $payload['id'] != '') {
             $post = Flight::get('postService')->editPost($payload);
+            $message = "Post updated successfully";
         } else {
             unset($payload['id']);
             $post = Flight::get('postService')->addPost($payload);
+            $message = "Post created successfully";
         }
 
-        Flight::json(["message" => $post]);
+        Flight::json(["message" => $message]);
     });
 
     /**

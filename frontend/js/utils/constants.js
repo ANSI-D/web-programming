@@ -3,7 +3,7 @@ var Constants = {
     if(location.hostname == 'localhost'){
       return "http://localhost/danis-pojskic/web-programming/backend/";
     } else {
-      return "https://urchin-app-sr3f6.ondigitalocean.app/live-backend/";
+      return "https://whattohost-57p29.ondigitalocean.app/backend/";
     }
   }
 };

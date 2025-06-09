@@ -66,12 +66,20 @@ Flight::group('/comments', function(){
      *          )
      *      )
      * )
-     */
-    Flight::route('POST /add', function() {
+     */    Flight::route('POST /add', function() {
         $payload = Flight::request()->data->getData();
 
         try {
-            if($payload['id'] != NULL && $payload['id'] != '') {
+            // Get the logged-in user from JWT token
+            $user = Flight::get('user');
+            if (!$user) {
+                Flight::halt(401, "User not authenticated");
+            }
+
+            // Set the user_id from the authenticated user
+            $payload['user_id'] = $user->id;
+
+            if(isset($payload['id']) && $payload['id'] != NULL && $payload['id'] != '') {
                 $comment = Flight::get('commentService')->editComment($payload);
                 $message = "Comment updated successfully";
             } else {

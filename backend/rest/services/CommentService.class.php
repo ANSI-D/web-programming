@@ -49,7 +49,6 @@ class CommentService {
 
     // Additional method to get comments by post ID
     public function getCommentsByPostId($post_id) {
-        $query = "SELECT * FROM comments WHERE post_id = :post_id";
-        return $this->commentDao->query($query, ["post_id" => $post_id]);
+        return $this->commentDao->getCommentsByPostId($post_id);
     }
 }

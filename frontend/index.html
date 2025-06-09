@@ -68,8 +68,6 @@
                 <!-- Navbar Links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a href="#home" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li class="nav-item"><a href="#single" class="nav-link px-2 text-white">Single</a></li>
-                    <li class="nav-item"><a href="#category" class="nav-link px-2 text-white">Categories</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link px-2 text-white">Contact</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link px-2 text-white">About</a></li>
                 </ul>
@@ -77,8 +75,9 @@
                 <!--  <a href="login.html" class="btn btn-outline-light me-2">Login</a>
                         <a href="register.html" class="btn btn-primary">Register</a> -->
                 <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
-
                     <div class="text-end">
+                        <a href="#admin" class="btn btn-outline-warning me-2" id="admin-button" style="display: none;">Admin Panel</a>
+                        <a href="#post-panel" class="btn btn-outline-success me-2" id="post-panel-button" style="display: none;">New Post</a>
                         <a href="javascript:void(0);" class="btn btn-outline-light me-2" id="logout-button">Logout</a>
                     </div>
                 </div>
@@ -87,8 +86,47 @@
     </nav>
     <script>
         $(document).ready(function () {
+            // Check if user is admin and show admin button
+            const user = Utils.get_from_localstorage("user");
+            if (user && user.role === "admin") {
+                $("#admin-button").show();
+                $("#post-panel-button").show();
+            }
+
             $("#logout-button").on("click", function () {
                 Utils.logout(); // Call the logout function from utils.js
+            });
+
+            $("#admin-button").on("click", function () {
+                // Navigate to admin panel
+                window.location.hash = "#admin";
+            });
+            $("#post-panel-button").on("click", function () {
+                // Navigate to post panel
+                window.location.hash = "#post-panel";
+            });
+
+            // Improved hamburger menu handling for mobile
+            // 1. Close on nav links and button clicks
+            $('.navbar-nav .nav-link, .navbar .btn').on('click', function() {
+                if($('.navbar-toggler').is(':visible')) {
+                    $('.navbar-collapse').collapse('hide');
+                }
+            });
+            
+            // 2. Close on clicking outside the navbar
+            $(document).on('click', function(event) {
+                const $navbar = $('.navbar-collapse');
+                if ($navbar.hasClass('show') && !$(event.target).closest('.navbar').length) {
+                    $navbar.collapse('hide');
+                }
+            });
+            
+            // 3. Close when hash changes (SPA navigation)
+            $(window).on('hashchange', function() {
+                if($('.navbar-collapse').hasClass('show')) {
+                    $('.navbar-collapse').collapse('hide');
+                }
             });
         });
     </script>
@@ -103,9 +141,9 @@
         <section id="search" data-load="search-result.html"></section>
         <section id="about" data-load="about.html"></section>
         <section id="admin" data-load="admin.html"></section>
+        <section id="post-panel" data-load="post-panel.html"></section> <!-- Post Panel Section -->
     <!-- Spapp End -->
     </main>
-
 
 
 	<script>
@@ -113,6 +151,20 @@
             defaultView: "#home",
             templateDir: "./html/", 
         });
+        
+        // Add role-based access control for post-panel
+        app.route({
+            view: "post-panel",
+            onReady: function() {
+                // Check if user has admin role every time post-panel is accessed
+                const user = Utils.get_from_localstorage("user");
+                if (!user || user.role !== 'admin') {
+                    window.location.hash = '#home';
+                    return;
+                }
+            }
+        });
+        
         app.run();
     </script>
 
@@ -124,6 +176,10 @@
         // If no user or token is found, log out the user
         Utils.logout();
     }
+</script>
+<script src="js/services/PostService.js"></script>
+<script>
+    PostService.getPosts();
 </script>
   </body>
 </html>

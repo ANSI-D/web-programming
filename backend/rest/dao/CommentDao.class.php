@@ -44,6 +44,11 @@ class CommentDao extends BaseDao {
             
         ]);
     }
+
+    public function getCommentsByPostId($post_id) {
+        $query = "SELECT * FROM comments WHERE post_id = :post_id";
+        return $this->query($query, ["post_id" => $post_id]);
+    }
 }
 
 ?>

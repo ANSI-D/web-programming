@@ -1,0 +1,127 @@
+<body>
+	<div class="hero overlay inner-page bg-primary py-5">
+		<div class="container">
+			<div class="row align-items-center justify-content-center text-center pt-5">
+				<div class="col-lg-6">
+					<h1 class="heading text-white mb-3">Create New Post</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<form id="create-post-form">
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label for="post-title" class="form-label">Post Title</label>
+								<input type="text" class="form-control" id="post-title" name="title" placeholder="Enter post title" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label for="post-content" class="form-label">Content</label>
+								<textarea class="form-control" id="post-content" name="content" rows="8" placeholder="Write your post content here..." required></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<button type="submit" class="btn btn-primary">Create Post</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="post-success" class="alert alert-success mt-3 d-none">Post created successfully!</div>
+								<div id="post-error" class="alert alert-danger mt-3 d-none">Failed to create post.</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>  	<script>
+    $(document).ready(function() {
+      $('#create-post-form').on('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const title = $('#post-title').val().trim();
+        const content = $('#post-content').val().trim();
+        
+        // Hide previous messages
+        $('#post-success').addClass('d-none');
+        $('#post-error').addClass('d-none');
+        
+        // Basic validation
+        if (!title || !content) {
+          $('#post-error').text('Please fill in all fields.').removeClass('d-none');
+          return;
+        }
+        
+        // Prepare data for submission
+        const postData = {
+          title: title,
+          content: content
+        };
+        
+        // Submit to backend using basic jQuery AJAX
+        $.ajax({
+          url: 'http://localhost/danis-pojskic/web-programming/backend/posts/add',
+          type: 'POST',
+          data: postData,
+          success: function(response) {
+            $('#post-success').text('Post created successfully!').removeClass('d-none');
+            $('#post-error').addClass('d-none');
+            $('#create-post-form')[0].reset();
+          },
+          error: function(xhr, status, error) {
+            let errorMessage = 'Failed to create post. ';
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+              errorMessage += xhr.responseJSON.message;
+            } else if (xhr.responseText) {
+              errorMessage += xhr.responseText;
+            } else {
+              errorMessage += 'Status: ' + xhr.status + ', Error: ' + error;
+            }
+            $('#post-error').text(errorMessage).removeClass('d-none');
+            $('#post-success').addClass('d-none');
+            console.error('Error details:', xhr);
+          }
+        });
+      });
+    });
+  </script>
+  
+  <!-- Fix for navbar in post panel -->
+  <style>
+    /* Ensure navbar stays on top with proper positioning */
+    .navbar-toggler {
+      position: relative !important;
+      z-index: 1050 !important;
+    }
+    
+    /* Add proper spacing for the post panel content */
+    body {
+      overflow-x: hidden;
+    }
+    
+    /* Adjust hero overlay position to prevent navbar overlap */
+    .hero.overlay.inner-page {
+      margin-top: 30px;
+    }
+  </style>
+  
+  <script>
+    $(document).ready(function() {
+      // Ensure navbar collapses when interacting with the post panel
+      $('#create-post-form').on('click', function() {
+        if($('.navbar-collapse').hasClass('show')) {
+          $('.navbar-collapse').collapse('hide');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
